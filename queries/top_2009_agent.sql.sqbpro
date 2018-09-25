@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/nss4/workspace/chinook/sourceCode\chinookdatabase\ChinookDatabase\DataSources\Chinook_Sqlite.sqlite" foreign_keys="1"/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4241"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Employee"/><default_encoding codec=""/><browsetable_info data="AAAACwAAAAoAVAByAGEAYwBrAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAABoAUABsAGEAeQBsAGkAcwB0AFQAcgBhAGMAawAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAA//////////8AAAAA/////wAAABAAUABsAGEAeQBsAGkAcwB0AAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAABIATQBlAGQAaQBhAFQAeQBwAGUAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAD/////AAAAFgBJAG4AdgBvAGkAYwBlAEwAaQBuAGUAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAIAMwAAAAAA//////////8AAAAA/////wAAAA4ASQBuAHYAbwBpAGMAZQAAAAMAAAABAAAAAAAAAAEAAAADAAAAAAAAAAAA//////////8AAAAA/////wAAAAoARwBlAG4AcgBlAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAABAARQBtAHAAbABvAHkAZQBlAAAAAAAAAAAAAAABAAAABAAAAQ8AAAAAAAAAAAD//////////wAAAAD/////AAAAEABDAHUAcwB0AG8AbQBlAHIAAAAAAAAAAAAAAAAAAAABAAAADQAAAAAAAAAAAP//////////AAAAAP////8AAAAMAEEAcgB0AGkAcwB0AAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAAAoAQQBsAGIAdQBtAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////w=="/></tab_browse><tab_sql><sql name="SQL 1">
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/nss4/workspace/chinook/Chinook_Sqlite.sqlite" foreign_keys="1"/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4241"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="MediaType"/><default_encoding codec=""/><browsetable_info data="AAAAAwAAABIATQBlAGQAaQBhAFQAeQBwAGUAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAD/////AAAADgBJAG4AdgBvAGkAYwBlAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////wAAAAoAQQBsAGIAdQBtAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8AAAAA/////w=="/></tab_browse><tab_sql><sql name="SQL 1">
 --19. Which sales agent made the most in sales in 2009?
 
+
 SELECT SUM(i.Total) AS TotalSales, e.FirstName || ' ' || e.LastName AS SalesAgent, i.InvoiceDate
-	FROM Invoice i
-	JOIN Customer c ON c.CustomerId = i.CustomerId
-	JOIN Employee e ON e.EmployeeId = c.SupportRepId
-	WHERE i.InvoiceDate &gt;= '2009-01-01' AND i.InvoiceDate &lt;= '2009-12-31'
-	GROUP BY SalesAgent;
-
-
-
+		FROM Invoice i
+		JOIN Customer c ON c.CustomerId = i.CustomerId
+		JOIN Employee e ON e.EmployeeId = c.SupportRepId
+		WHERE i.InvoiceDate &gt;= '2009-01-01' AND i.InvoiceDate &lt;= '2009-12-31'
+		GROUP BY SalesAgent
+		ORDER BY TotalSales desc
+		limit 1;
 </sql><current_tab id="0"/></tab_sql></sqlb_project>
